@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de monedas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body class="bg-primary-subtle">
+    <div class="container text-white">
+        <div class="box bg-secondary mx-auto mt-5 p-5 rounded text-center">
+            <h3>Convertidor de monedas (CLP)</h3>
+            <div class="my-3 px-5">
+                <label for="pesos">Pesos chilenos (CLP)</label>
+                <input type="number" id="pesos" class="form-control mt-2" placeholder="Valor en pesos chilenos"> 
+            </div>
+            <div class="my-3 px-5">
+                <label for="">Divisa extranjera</label>
+                <select name="" id="moneda" class="form-control mt-2"></select>
+            </div>
+            <button id="btnConvert" class="btn btn-primary">Convertir</button>
+            <div id="result" class="text-center">...</div>
+            <hr/>
+            <canvas id="chart" class="d-none"></canvas>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="assets/js/javascript.js"></script>
+</body>
+</html>
