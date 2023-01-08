@@ -1,4 +1,4 @@
-const urlApi = 'https://mindicador.cl/api/';
+const urlApi = 'https://mindicador.cl/api';
 const filtrarMonedas = ["dolar", "euro", "uf", "utm"];
 const selectWithCurrencies = document.querySelector("#moneda");
 const divResult = document.querySelector("#result");
@@ -8,29 +8,35 @@ const calcResult = (amount) => `$${(amount/selectWithCurrencies.value).toFixed(2
 
 // obteniendo monedas desde la API
 const getCurrencies = async () =>{
-    const reqCurrencies = await fetch(urlApi);
-    const resData = await reqCurrencies.json();
+    try{
+        const reqCurrencies = await fetch(urlApi);
+        const resData = await reqCurrencies.json();
 
-    // obteniendo el código de las divisas
-    const currencyList = filtrarMonedas.map((currency)=>{
-        return{
-            code: resData[currency].codigo,
-            value: resData[currency].valor,
-        }
-    } )
+        // obteniendo el código de las divisas
+        const currencyList = filtrarMonedas.map((currency)=>{
+            return{
+                code: resData[currency].codigo,
+                value: resData[currency].valor,
+            }
+        } )
 
-    //mostrando monedas
-    currencyList.forEach((localCurrency)=> {
-        const selectOption = document.createElement("option");
-        selectOption.value = localCurrency.value;
-        selectOption.text = capitalize(localCurrency.code);
-        selectWithCurrencies.appendChild(selectOption);
-    })   
+        //mostrando monedas
+        currencyList.forEach((localCurrency)=> {
+            const selectOption = document.createElement("option");
+            selectOption.value = localCurrency.value;
+            selectOption.text = capitalize(localCurrency.code);
+            selectWithCurrencies.appendChild(selectOption);
+    })    
+    } catch(error){
+        console.log(error);
+        alert('Error al obtener el listado de monedas')
+    }
+
 }
  
 //gráfico
 const drawChart = async () => {
-    try{
+    try {
         const currency =
         selectWithCurrencies.options[
             selectWithCurrencies.selectedIndex
@@ -52,11 +58,11 @@ const drawChart = async () => {
             ],
         };
         const config = {
-            type: "line",
+            type: 'line',
             data: data,
         };
 
-        const chartDom =document.querySelector("#chart");
+        const chartDom = document.querySelector("#chart");
         chartDom.classList.remove("d-none");
         new Chart(chartDom, config);
 
