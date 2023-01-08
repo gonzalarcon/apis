@@ -67,7 +67,7 @@ const drawChart = async () => {
         new Chart(chartDom, config);
 
     } catch (error){
-        alert('Hubo un problema al obtener los datos para generar el gráfico');
+        alert('Hubo un problema al obtener los datos para generar el gráfico. Refresca la página e inténtalo de nuevo');
         console.log(error);
     }
 
